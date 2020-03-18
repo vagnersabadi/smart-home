@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
           appBar: AppBar(
             elevation: 0.0,
             leading:
-                IconButton(icon: Icon(Icons.notifications), onPressed: null),
+                IconButton(icon: Icon(Icons.local_hotel), onPressed: null),
             title: Text(
               '25° C',
               style:
@@ -61,14 +61,12 @@ class MyApp extends StatelessWidget {
               Container(),
             ],
           ),
-
           bottomNavigationBar: BottomBar(),
           floatingActionButton: FloatingActionButton(
             onPressed: () {},
             child: Icon(Icons.add),
             backgroundColor: ColorPrimary,
             elevation: 2,
-            
           ),
           floatingActionButtonLocation:
               FloatingActionButtonLocation.centerDocked,
@@ -90,7 +88,7 @@ class ListCards extends StatelessWidget {
           children: <Widget>[
             new CardCustom(
                 Icon(
-                  Icons.add,
+                  Icons.panorama,
                   color: ColorPrimary,
                 ),
                 'Air Conditioner',
@@ -98,7 +96,7 @@ class ListCards extends StatelessWidget {
                 false),
             new CardCustom(
                 Icon(
-                  Icons.add,
+                  Icons.live_tv,
                   color: ColorPrimary,
                 ),
                 'Smart TV',
@@ -106,7 +104,7 @@ class ListCards extends StatelessWidget {
                 false),
             new CardCustom(
                 Icon(
-                  Icons.add,
+                  Icons.highlight,
                   color: Colors.white,
                 ),
                 'Light Buld',
@@ -114,7 +112,7 @@ class ListCards extends StatelessWidget {
                 true),
             new CardCustom(
                 Icon(
-                  Icons.add,
+                  Icons.local_laundry_service,
                   color: ColorPrimary,
                 ),
                 'Washing Machine',
@@ -122,7 +120,7 @@ class ListCards extends StatelessWidget {
                 false),
             new CardCustom(
                 Icon(
-                  Icons.add,
+                  Icons.local_drink,
                   color: ColorPrimary,
                 ),
                 'Refrigerator',
@@ -130,7 +128,7 @@ class ListCards extends StatelessWidget {
                 false),
             new CardCustom(
                 Icon(
-                  Icons.add,
+                  Icons.router,
                   color: ColorPrimary,
                 ),
                 'Router',
@@ -211,34 +209,33 @@ class CardCustom extends StatelessWidget {
 }
 
 class BottomBar extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
-            backgroundColor: Colors.white,
-            elevation: 0,
-            selectedItemColor: ColorPrimary,
-            unselectedItemColor: Grey1,
-            showSelectedLabels: false,
-            showUnselectedLabels: false,
-            items: [
-              BottomNavigationBarItem(
-                icon: Icon(Icons.home),
-                title: Text(""),
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.calendar_today),
-                title: Text(""),
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.timeline),
-                title: Text(""),
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.more_horiz),
-                title: Text(""),
-              )
-            ],
-          ),
+      backgroundColor: Colors.white,
+      elevation: 0,
+      selectedItemColor: ColorPrimary,
+      unselectedItemColor: Grey1,
+      showSelectedLabels: false,
+      showUnselectedLabels: false,
+      items: [
+        BottomNavigationBarItem(
+          icon: Icon(Icons.home),
+          title: Text(""),
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.calendar_today),
+          title: Text(""),
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.timeline),
+          title: Text(""),
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.more_horiz),
+          title: Text(""),
+        )
+      ],
+    );
   }
 }
