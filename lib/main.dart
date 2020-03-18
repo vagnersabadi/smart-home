@@ -56,36 +56,22 @@ class MyApp extends StatelessWidget {
                 padding: EdgeInsets.only(top: 16),
                 child: ListCards(),
               ),
-              Icon(Icons.directions_transit),
-              Icon(Icons.directions_bike),
-              Icon(Icons.directions_bike),
+              Container(),
+              Container(),
+              Container(),
             ],
           ),
-          bottomNavigationBar: BottomNavigationBar(
-            items: [
-              BottomNavigationBarItem(
-                icon: Icon(Icons.home),
-                title: Text(""),
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.mail),
-                title: Text(""),
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.person),
-                title: Text(""),
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.settings),
-                title: Text(""),
-              )
-            ],
-          ),
+
+          bottomNavigationBar: BottomBar(),
           floatingActionButton: FloatingActionButton(
             onPressed: () {},
             child: Icon(Icons.add),
             backgroundColor: ColorPrimary,
+            elevation: 2,
+            
           ),
+          floatingActionButtonLocation:
+              FloatingActionButtonLocation.centerDocked,
         ),
       ),
     );
@@ -98,16 +84,71 @@ class ListCards extends StatelessWidget {
     return Padding(
         padding: EdgeInsets.all(16),
         child: GridView.count(
-            crossAxisCount: 2,
-            crossAxisSpacing: 16,
-            mainAxisSpacing: 16,
-            children: List.generate(6, (index) {
-              return Center(child: CardCustom());
-            })));
+          crossAxisCount: 2,
+          crossAxisSpacing: 16,
+          mainAxisSpacing: 16,
+          children: <Widget>[
+            new CardCustom(
+                Icon(
+                  Icons.add,
+                  color: ColorPrimary,
+                ),
+                'Air Conditioner',
+                'Voltas RF140',
+                false),
+            new CardCustom(
+                Icon(
+                  Icons.add,
+                  color: ColorPrimary,
+                ),
+                'Smart TV',
+                'Samsung EX55 4K',
+                false),
+            new CardCustom(
+                Icon(
+                  Icons.add,
+                  color: Colors.white,
+                ),
+                'Light Buld',
+                'Phillips Hue 2',
+                true),
+            new CardCustom(
+                Icon(
+                  Icons.add,
+                  color: ColorPrimary,
+                ),
+                'Washing Machine',
+                'Bosh 7kg 5475',
+                false),
+            new CardCustom(
+                Icon(
+                  Icons.add,
+                  color: ColorPrimary,
+                ),
+                'Refrigerator',
+                'Whirlpoll WR190',
+                false),
+            new CardCustom(
+                Icon(
+                  Icons.add,
+                  color: ColorPrimary,
+                ),
+                'Router',
+                'Tp-Link 878',
+                false),
+          ],
+        ));
   }
 }
 
 class CardCustom extends StatelessWidget {
+  final Icon icone;
+  final String nome;
+  final String descricao;
+  final bool selecionado;
+
+  const CardCustom(this.icone, this.nome, this.descricao, this.selecionado);
+
   @override
   Widget build(BuildContext context) {
     return new Container(
@@ -115,7 +156,8 @@ class CardCustom extends StatelessWidget {
         child: new Column(
           children: <Widget>[
             new Card(
-              elevation: 0.0,
+              color: selecionado ? ColorPrimary : Colors.white,
+              elevation: selecionado ? 15 : 0,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(30.0)),
               child: InkWell(
@@ -128,23 +170,22 @@ class CardCustom extends StatelessWidget {
                           children: <Widget>[
                             new Padding(
                               padding: EdgeInsets.only(bottom: 16),
-                              child: Icon(
-                                Icons.notifications_none,
-                                color: ColorPrimary,
-                              ),
+                              child: icone,
                             ),
                             new Padding(
                               padding: EdgeInsets.all(4),
-                              child: Text('Air Conditioner',
+                              child: Text(nome,
                                   style: TextStyle(
-                                      color: Colors.black,
+                                      color: selecionado
+                                          ? Colors.white
+                                          : Colors.black,
                                       fontWeight: FontWeight.w600)),
                             ),
                             new Padding(
                               padding: EdgeInsets.all(4),
-                              child: Text('Voltas RF140',
+                              child: Text(descricao,
                                   style: TextStyle(
-                                      color: Grey1,
+                                      color: selecionado ? Colors.white : Grey1,
                                       fontWeight: FontWeight.w600,
                                       fontSize: 10)),
                             ),
@@ -153,7 +194,9 @@ class CardCustom extends StatelessWidget {
                               child: CupertinoSwitch(
                                 value: false,
                                 onChanged: (bool value) {},
-                                activeColor: ColorPrimary,
+                                activeColor: selecionado
+                                    ? ColorSecondary
+                                    : ColorSecondary,
                               ),
                             )
                           ],
@@ -164,5 +207,38 @@ class CardCustom extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+class BottomBar extends StatelessWidget {
+
+  @override
+  Widget build(BuildContext context) {
+    return BottomNavigationBar(
+            backgroundColor: Colors.white,
+            elevation: 0,
+            selectedItemColor: ColorPrimary,
+            unselectedItemColor: Grey1,
+            showSelectedLabels: false,
+            showUnselectedLabels: false,
+            items: [
+              BottomNavigationBarItem(
+                icon: Icon(Icons.home),
+                title: Text(""),
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.calendar_today),
+                title: Text(""),
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.timeline),
+                title: Text(""),
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.more_horiz),
+                title: Text(""),
+              )
+            ],
+          ),
   }
 }
