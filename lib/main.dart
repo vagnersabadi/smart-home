@@ -9,59 +9,86 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: DefaultTabController(
-            length: 4,
-            child: Scaffold(
-              appBar: AppBar(
-                elevation: 0.0,
-                leading: IconButton(
-                    icon: Icon(Icons.notifications), onPressed: null),
-                title: Text(
-                  '25° C',
-                  style: TextStyle(
-                      fontWeight: FontWeight.w400, color: ColorPrimary),
+      debugShowCheckedModeBanner: false,
+      home: DefaultTabController(
+        length: 4,
+        child: Scaffold(
+          appBar: AppBar(
+            elevation: 0.0,
+            leading:
+                IconButton(icon: Icon(Icons.notifications), onPressed: null),
+            title: Text(
+              '25° C',
+              style:
+                  TextStyle(fontWeight: FontWeight.w400, color: ColorPrimary),
+            ),
+            backgroundColor: ColorSecondary,
+            actions: <Widget>[
+              IconButton(icon: Icon(Icons.notifications), onPressed: null)
+            ],
+            bottom: TabBar(
+              isScrollable: true,
+              indicatorColor: ColorPrimary,
+              labelColor: Colors.black,
+              unselectedLabelColor: Grey1,
+              indicatorSize: TabBarIndicatorSize.label,
+              tabs: [
+                // Tab(icon: Icon(Icons.directions_car)),
+                Tab(
+                  text: 'LIVING ROM',
                 ),
-                backgroundColor: ColorSecondary,
-                actions: <Widget>[
-                  IconButton(icon: Icon(Icons.notifications), onPressed: null)
-                ],
-                bottom: TabBar(
-                  isScrollable: true,
-                  indicatorColor: ColorPrimary,
-                  labelColor: Colors.black,
-                  unselectedLabelColor: Grey1,
-                  indicatorSize: TabBarIndicatorSize.label,
-                  tabs: [
-                    // Tab(icon: Icon(Icons.directions_car)),
-                    Tab(
-                      text: 'LIVING ROM',
-                    ),
-                    Tab(
-                      text: 'KITCHEN',
-                    ),
-                    Tab(
-                      text: 'DRAWING ROOM',
-                    ),
-                    Tab(
-                      text: 'STUDY ROOM',
-                    ),
-                  ],
+                Tab(
+                  text: 'KITCHEN',
                 ),
+                Tab(
+                  text: 'DRAWING ROOM',
+                ),
+                Tab(
+                  text: 'STUDY ROOM',
+                ),
+              ],
+            ),
+          ),
+          backgroundColor: ColorSecondary,
+          body: TabBarView(
+            children: [
+              new Padding(
+                padding: EdgeInsets.only(top: 16),
+                child: ListCards(),
               ),
-              backgroundColor: ColorSecondary,
-              body: TabBarView(
-                children: [
-                  new Padding(
-                    padding: EdgeInsets.only(top: 16),
-                    child: ListCards(),
-                  ),
-                  Icon(Icons.directions_transit),
-                  Icon(Icons.directions_bike),
-                  Icon(Icons.directions_bike),
-                ],
+              Icon(Icons.directions_transit),
+              Icon(Icons.directions_bike),
+              Icon(Icons.directions_bike),
+            ],
+          ),
+          bottomNavigationBar: BottomNavigationBar(
+            items: [
+              BottomNavigationBarItem(
+                icon: Icon(Icons.home),
+                title: Text(""),
               ),
-            )));
+              BottomNavigationBarItem(
+                icon: Icon(Icons.mail),
+                title: Text(""),
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.person),
+                title: Text(""),
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.settings),
+                title: Text(""),
+              )
+            ],
+          ),
+          floatingActionButton: FloatingActionButton(
+            onPressed: () {},
+            child: Icon(Icons.add),
+            backgroundColor: ColorPrimary,
+          ),
+        ),
+      ),
+    );
   }
 }
 
@@ -90,7 +117,7 @@ class CardCustom extends StatelessWidget {
             new Card(
               elevation: 0.0,
               shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(15.0)),
+                  borderRadius: BorderRadius.circular(30.0)),
               child: InkWell(
                 child: Container(
                     width: 200,
